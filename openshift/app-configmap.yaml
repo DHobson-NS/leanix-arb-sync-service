@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arb-config
+  namespace: leanix-services
+  labels:
+    app.kubernetes.io/part-of: leanix-services
+    app.kubernetes.io/component: app
+data:
+  # ── LeanIX ────────────────────────────────────────────────────────────────
+  LEANIX_API_USER: arbWorkflowUser
+  LEANIX_TAG_ARB_PHASE_OPEN: 8ab87f80-301c-46ac-a8c5-d0b302badae9
+
+  # ── Database: its own database, leanix_arb (password in the secret) ───────
+  QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/leanix_arb?currentSchema=arb
+  QUARKUS_DATASOURCE_USERNAME: arb_user
+
+  # ── Configuration service ─────────────────────────────────────────────────
+  CONFIG_SERVICE_URL: http://leanix-sync-services-config:8080

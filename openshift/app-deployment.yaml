@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leanix-arb-sync-service
+  namespace: leanix-services
+  labels:
+    app.kubernetes.io/name: leanix-arb-sync-service
+    app.kubernetes.io/part-of: leanix-services
+    app.kubernetes.io/component: app
+spec:
+  # Exactly one replica: the scheduled jobs are not coordinated between pods
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: leanix-arb-sync-service
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: leanix-arb-sync-service
+        app.kubernetes.io/part-of: leanix-services
+        app.kubernetes.io/component: app
+    spec:
+      containers:
+        - name: app
+          image: image-registry.openshift-image-registry.svc:5000/leanix-services/leanix-arb-sync-service:latest
+          ports:
+            - containerPort: 8080
+              name: http
+          envFrom:
+            - configMapRef:
+                name: arb-config
+            - secretRef:
+                name: arb-credentials
+          readinessProbe:
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /q/health/live
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          startupProbe:
+            httpGet:
+              path: /q/health/started
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 12
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: leanix-arb-sync-service
+  namespace: leanix-services
+  labels:
+    app.kubernetes.io/name: leanix-arb-sync-service
+    app.kubernetes.io/part-of: leanix-services
+    app.kubernetes.io/component: app
+spec:
+  selector:
+    app.kubernetes.io/name: leanix-arb-sync-service
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+  type: ClusterIP

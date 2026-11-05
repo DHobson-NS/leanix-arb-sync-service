@@ -1,0 +1,37 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: leanix-arb-sync-service
+  namespace: leanix-services
+  labels:
+    app.kubernetes.io/name: leanix-arb-sync-service
+    app.kubernetes.io/part-of: leanix-services
+    app.kubernetes.io/component: app
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: leanix-arb-sync-service
+  namespace: leanix-services
+  labels:
+    app.kubernetes.io/name: leanix-arb-sync-service
+    app.kubernetes.io/part-of: leanix-services
+    app.kubernetes.io/component: app
+spec:
+  source:
+    type: Binary
+  strategy:
+    type: Docker
+    dockerStrategy:
+      dockerfilePath: Dockerfile
+  output:
+    to:
+      kind: ImageStreamTag
+      name: leanix-arb-sync-service:latest
+  resources:
+    requests:
+      cpu: 250m
+      memory: 1Gi
+    limits:
+      cpu: "2"
+      memory: 3Gi

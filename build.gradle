@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+group = 'com.nscorp'
+version = '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-arc'
+
+    // REST API (JSON) and REST clients for the LeanIX and configuration service APIs
+    implementation 'io.quarkus:quarkus-rest-jackson'
+    implementation 'io.quarkus:quarkus-rest-client-jackson'
+
+    // ORM / Database
+    implementation 'io.quarkus:quarkus-hibernate-orm-panache'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
+
+    // Schema migrations
+    implementation 'io.quarkus:quarkus-flyway'
+
+    // Scheduled jobs
+    implementation 'io.quarkus:quarkus-scheduler'
+
+    // Health endpoint
+    implementation 'io.quarkus:quarkus-smallrye-health'
+
+    // Test
+    testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.quarkus:quarkus-junit5-mockito'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'java.util.logging.manager', 'org.jboss.logmanager.LogManager'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.release = 25
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
