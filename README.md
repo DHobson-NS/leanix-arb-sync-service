@@ -2,7 +2,7 @@
 
 Part of [leanix-services](../README.md). Creates an **Architecture Review** (ARB) fact sheet in LeanIX for every new Initiative.
 
-On its schedule it reads the Initiative/Project fact sheets from LeanIX. The schedule (the `ARB_SYNC` schedule: update frequency, value, an optional start time and whether it runs) and the review teams are configuration kept by [leanix-sync-services-config](../leanix-sync-services-config/README.md) and edited on the admin site. This service asks the configuration service every minute whether it is due and tells it when a run starts; if the configuration service cannot be reached it does not run. For each Initiative created after the previous run that has no ARB record yet, it:
+On its schedule it reads the Initiative/Project fact sheets from LeanIX. The schedule (the `ARB_SYNC` schedule: update frequency, value, an optional start time and whether it runs) and the review teams are configuration kept by [leanix-sync-config-service](../leanix-sync-config-service/README.md) and edited on the admin site. This service asks the configuration service every minute whether it is due and tells it when a run starts; if the configuration service cannot be reached it does not run. For each Initiative created after the previous run that has no ARB record yet, it:
 
 1. creates an `ArchitectureReview` fact sheet named after the initiative (cut to 36 characters),
 2. links it to the initiative,
