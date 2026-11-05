@@ -16,4 +16,4 @@ data:
   QUARKUS_DATASOURCE_USERNAME: arb_user
 
   # ── Configuration service ─────────────────────────────────────────────────
-  CONFIG_SERVICE_URL: http://leanix-sync-config-service:8080
+  CONFIG_SERVICE_URL: http://leanix-config-service:8080

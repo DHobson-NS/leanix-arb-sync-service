@@ -1,5 +1,5 @@
 /**
- * REST client for the configuration service (leanix-sync-config-service).
+ * REST client for the configuration service (leanix-config-service).
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
