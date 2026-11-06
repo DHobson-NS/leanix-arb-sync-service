@@ -1,11 +1,13 @@
 /**
+ * GraphQLRequest.java
+ *
  * Body of a request to the LeanIX GraphQL API.
  * <p>
  * Serialized to JSON with the properties "query" and "variables".
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

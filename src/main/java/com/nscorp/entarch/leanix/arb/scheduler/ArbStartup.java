@@ -1,11 +1,13 @@
 /**
+ * ArbStartup.java
+ *
  * Fills in the Initiative names of older reviews once the service has started.
  * <p>
  * Runs on its own thread so a slow LeanIX call does not hold up startup, and only reads from LeanIX.
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

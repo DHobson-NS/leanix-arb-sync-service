@@ -1,9 +1,11 @@
 /**
+ * ApiTokenFilter.java
+ *
  * Requires the API token on every call under /api.
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-11-05
+ * @since 1.0.0 (2026-11-05)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

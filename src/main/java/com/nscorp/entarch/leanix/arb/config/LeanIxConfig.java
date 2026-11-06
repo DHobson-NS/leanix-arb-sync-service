@@ -1,4 +1,6 @@
 /**
+ * LeanIxConfig.java
+ *
  * Configuration of the connection to LeanIX.
  * <p>
  * Mapped from the properties with the prefix "leanix" (leanix.host, leanix.api.token,
@@ -6,7 +8,7 @@
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

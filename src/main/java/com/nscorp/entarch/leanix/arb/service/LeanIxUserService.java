@@ -1,4 +1,6 @@
 /**
+ * LeanIxUserService.java
+ *
  * Knows the users of the LeanIX workspace.
  * <p>
  * Reads the users through the user management API and keeps them for an hour. Used to find the email address of a manager who is only
@@ -6,7 +8,7 @@
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

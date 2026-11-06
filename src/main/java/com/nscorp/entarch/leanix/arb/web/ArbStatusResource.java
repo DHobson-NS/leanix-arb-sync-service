@@ -1,11 +1,13 @@
 /**
+ * ArbStatusResource.java
+ *
  * Read-only status of arb-sync for the ARB page.
  * <p>
  * arb-sync keeps its tables in the arb schema of its own database; this reads the last run and the reviews it created.
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-29
+ * @since 1.0.0 (2026-10-29)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

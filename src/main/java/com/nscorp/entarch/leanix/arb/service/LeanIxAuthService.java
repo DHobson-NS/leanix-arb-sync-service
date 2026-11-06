@@ -1,11 +1,13 @@
 /**
+ * LeanIxAuthService.java
+ *
  * Obtains and caches the LeanIX bearer token.
  * <p>
  * Exchanges the API key for a token with the OAuth2 client_credentials flow and reuses it until one minute before it expires.
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

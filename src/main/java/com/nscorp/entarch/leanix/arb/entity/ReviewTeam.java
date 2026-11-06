@@ -1,4 +1,6 @@
 /**
+ * ReviewTeam.java
+ *
  * A review team: the people that normally review the projects of one manager.
  * <p>
  * Stored in the table review_team of the arb schema, loaded from a LeanIX inventory export of ArchitectureReview fact sheets: one row for
@@ -7,7 +9,7 @@
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property

@@ -1,4 +1,6 @@
 /**
+ * LeanIxAuthClient.java
+ *
  * REST client for the LeanIX OAuth2 token endpoint.
  * <p>
  * Quarkus REST client registered under the config key "leanix-auth"; its base URL comes
@@ -7,7 +9,7 @@
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
- * @since 2026-10-30
+ * @since 1.0.0 (2026-10-30)
  *
  * @copyright Copyright 2026 Norfolk Southern Corporation (NS).
  * Title, ownership rights, and intellectual property
