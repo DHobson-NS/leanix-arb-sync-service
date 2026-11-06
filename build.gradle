@@ -7,7 +7,14 @@ group = 'com.nscorp'
 version = '1.0.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
+    maven {
+        url nsRepository
+        allowInsecureProtocol = true
+    }
+    maven {
+        url nsSharedJarsRepository
+        allowInsecureProtocol = true
+    }
 }
 
 dependencies {
