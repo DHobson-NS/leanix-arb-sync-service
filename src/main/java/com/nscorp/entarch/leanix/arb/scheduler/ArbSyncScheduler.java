@@ -3,8 +3,8 @@
  *
  * Runs the ARB sync when its schedule says so.
  * <p>
- * Wakes up every minute and asks the configuration service whether the ARB_SYNC schedule is due. Without that schedule, or if the
- * configuration service cannot be reached, the sync does not run.
+ * Wakes up every minute and asks the management service whether the ARB_SYNC schedule is due. Without that schedule, or if the
+ * management service cannot be reached, the sync does not run.
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
@@ -22,7 +22,7 @@
  */
 package com.nscorp.entarch.leanix.arb.scheduler;
 
-import com.nscorp.entarch.leanix.arb.client.ConfigServiceClient;
+import com.nscorp.entarch.leanix.arb.client.ManagementServiceClient;
 import com.nscorp.entarch.leanix.arb.service.ArbSyncService;
 import io.quarkus.scheduler.Scheduled;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -36,7 +36,7 @@ import org.jboss.logging.Logger;
  * Runs the ARB sync when its schedule says so.
  * <p>
  * Wakes up every minute. The schedule (how often the sync runs, an optional start time, and whether it runs at all) is configuration
- * kept by the configuration service and edited on the admin site; there is no schedule in this service. Without that schedule the
+ * kept by the management service and edited on the pages of the management service; there is no schedule in this service. Without that schedule the
  * sync does not run.
  */
 @ApplicationScoped
@@ -49,10 +49,10 @@ public class ArbSyncScheduler {
     @Inject
     ArbSyncService arbSyncService;
 
-    /** The configuration service, which owns the schedule. */
+    /** The management service, which owns the schedule. */
     @Inject
     @RestClient
-    ConfigServiceClient config;
+    ManagementServiceClient config;
 
     /** Name of the schedule of this service. */
     static final String SERVICE_NAME = "ARB_SYNC";
@@ -78,12 +78,12 @@ public class ArbSyncScheduler {
             arbSyncService.sync();
         } catch (WebApplicationException e) {
             if (e.getResponse().getStatus() == 404) {
-                LOG.debugf("No %s schedule in the configuration service; the ARB sync does not run", SERVICE_NAME);
+                LOG.debugf("No %s schedule in the management service; the ARB sync does not run", SERVICE_NAME);
             } else {
                 LOG.warnf("Could not read the %s schedule (HTTP %d); the ARB sync does not run this time", SERVICE_NAME, e.getResponse().getStatus());
             }
         } catch (ProcessingException e) {
-            LOG.warnf("The configuration service cannot be reached (%s); the ARB sync does not run this time", e.getMessage());
+            LOG.warnf("The management service cannot be reached (%s); the ARB sync does not run this time", e.getMessage());
         } catch (Exception e) {
             LOG.error("Unhandled exception during ARB sync", e);
         }

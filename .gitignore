@@ -1,0 +1,6 @@
+build/
+.gradle/
+.idea/
+.env
+.DS_Store
+**/openshift/pull-secret.txt

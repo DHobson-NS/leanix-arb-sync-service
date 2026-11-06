@@ -1,7 +1,7 @@
 /**
- * ConfigServiceClient.java
+ * ManagementServiceClient.java
  *
- * REST client for the configuration service (leanix-config-service).
+ * REST client for the management service (leanix-management-service).
  *
  * @author <a href="mailto:darrell.hobson@nscorp.com">Darrell L. Hobson</a>
  * @version 1.0.0
@@ -34,15 +34,15 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import java.util.List;
 
 /**
- * The part of the API of the configuration service that arb-sync uses: its own schedule and the review teams. Every call carries the
+ * The part of the API of the management service that arb-sync uses: its own schedule and the review teams. Every call carries the
  * API token of that service as a bearer token.
  */
-@RegisterRestClient(configKey = "config-service")
-@ClientHeaderParam(name = "Authorization", value = "Bearer ${config-service.token}")
+@RegisterRestClient(configKey = "management-service")
+@ClientHeaderParam(name = "Authorization", value = "Bearer ${management-service.token}")
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public interface ConfigServiceClient {
+public interface ManagementServiceClient {
 
     /**
      * The schedule of a service.

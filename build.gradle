@@ -14,7 +14,7 @@ dependencies {
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
     implementation 'io.quarkus:quarkus-arc'
 
-    // REST API (JSON) and REST clients for the LeanIX and configuration service APIs
+    // REST API (JSON) and REST clients for the LeanIX and management service APIs
     implementation 'io.quarkus:quarkus-rest-jackson'
     implementation 'io.quarkus:quarkus-rest-client-jackson'
 

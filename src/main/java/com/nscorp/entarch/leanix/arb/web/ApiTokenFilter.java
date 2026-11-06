@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * Lets a call to /api through only if it carries the API token as a bearer token. The health endpoints are not under /api and stay
- * open for the OpenShift probes. The token is a secret shared with the admin site, set in the environment (API_TOKEN); the service
+ * open for the OpenShift probes. The token is a secret shared with the pages of the management service, set in the environment (API_TOKEN); the service
  * does not start without it. Send it only over a network you trust or over TLS.
  */
 public class ApiTokenFilter {

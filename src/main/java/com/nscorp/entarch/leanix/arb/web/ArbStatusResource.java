@@ -38,12 +38,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Read-only status of arb-sync, under /api/status, for the ARB page of the admin site.
+ * Read-only status of arb-sync, under /api/status, for the ARB page of the pages of the management service.
  * <p>
  * arb-sync keeps its tables in the arb schema of its own database. This reads when it last finished a
  * run (arb.sync_state), how many Architecture Reviews it has recorded and the latest ones (arb.architecture_review). If the
  * schema is not there yet, because arb-sync has not started, the answer says so instead of failing. Its schedule is not here:
- * it is configuration, the ARB_SYNC schedule of the configuration service.
+ * it is configuration, the ARB_SYNC schedule of the management service.
  */
 @Path("/api/status")
 @Produces(MediaType.APPLICATION_JSON)

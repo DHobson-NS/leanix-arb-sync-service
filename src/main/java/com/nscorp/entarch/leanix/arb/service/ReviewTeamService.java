@@ -25,7 +25,7 @@ package com.nscorp.entarch.leanix.arb.service;
 
 import com.nscorp.entarch.leanix.arb.entity.ReviewTeam;
 import com.nscorp.entarch.leanix.arb.model.FactSheetNode;
-import com.nscorp.entarch.leanix.arb.client.ConfigServiceClient;
+import com.nscorp.entarch.leanix.arb.client.ManagementServiceClient;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -60,10 +60,10 @@ public class ReviewTeamService {
     @Inject
     LeanIxUserService userService;
 
-    /** The review teams are configuration; they are read and updated through the configuration service. */
+    /** The review teams are configuration; they are read and updated through the management service. */
     @Inject
     @RestClient
-    ConfigServiceClient config;
+    ManagementServiceClient config;
 
     /**
      * What was assigned to a review.
@@ -163,7 +163,7 @@ public class ReviewTeamService {
 
     /**
      * Fills in the missing first and last names of the Director and Manager of each team from the Initiatives, and of the architects
-     * from the LeanIX users, and saves each team that changed through the configuration service.
+     * from the LeanIX users, and saves each team that changed through the management service.
      *
      * @param managersByEmail  Manager names by email address.
      * @param managersByKey    Manager names by the key of their name.

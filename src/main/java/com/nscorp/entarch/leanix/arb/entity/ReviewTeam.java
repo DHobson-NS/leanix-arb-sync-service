@@ -24,7 +24,7 @@
 package com.nscorp.entarch.leanix.arb.entity;
 
 /**
- * One row of the review teams table of the configuration service: the Director, Enterprise Architect and Solution Architect that
+ * One row of the review teams table of the management service: the Director, Enterprise Architect and Solution Architect that
  * are subscribed to the Architecture Review of a manager. Email cells with several people separate them with ';'. The fields have the
  * names of the JSON of the review team API.
  */
