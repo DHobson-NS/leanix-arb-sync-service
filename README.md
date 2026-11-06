@@ -1,6 +1,6 @@
 # leanix-arb-sync-service
 
-Part of the LeanIX sync services (platform: [leanix-services](https://github.com/DHobson-NS/leanix-services)). Creates an **Architecture Review** (ARB) fact sheet in LeanIX for every new Initiative.
+Part of the LeanIX sync services (platform: namespace and PostgreSQL server in leanix-management-service). Creates an **Architecture Review** (ARB) fact sheet in LeanIX for every new Initiative.
 
 On its schedule it reads the Initiative/Project fact sheets from LeanIX. The schedule (the `ARB_SYNC` schedule: update frequency, value, an optional start time and whether it runs) and the review teams are configuration kept by [leanix-management-service](https://github.com/DHobson-NS/leanix-management-service) and edited on the pages of the management service. This service asks the management service every minute whether it is due and tells it when a run starts; if the management service cannot be reached it does not run. For each Initiative created after the previous run that has no ARB record yet, it:
 
@@ -38,4 +38,4 @@ The `Dockerfile` in this folder builds the same jar and runs it.
 
 ## Run
 
-Deploy the platform first (`./openshift/deploy.sh` in the leanix-services repository), then `./openshift/deploy.sh` here for OpenShift Local (secrets in this repository's `.env`, see `.env.example`); `docker compose up -d --build` in leanix-services runs everything locally. The manifests are in `openshift/` of this folder: the service runs in the `leanix-services` namespace as `leanix-arb-sync-service` with its own database `leanix_arb` on the `postgres` server, and has no route. Its API (`GET /api/status`: last run, review count and the latest reviews, for the pages of the management service) needs the bearer token. Keep `replicas: 1`: two copies would create every review twice.
+Deploy leanix-management-service first (`./openshift/deploy.sh` there also deploys the platform), then `./openshift/deploy.sh` here for OpenShift Local (secrets in this repository's `.env`, see `.env.example`); `docker compose up -d --build` in leanix-management-service runs everything locally. The manifests are in `openshift/` of this folder: the service runs in the `leanix-services` namespace as `leanix-arb-sync-service` with its own database `leanix_arb` on the `postgres` server, and has no route. Its API (`GET /api/status`: last run, review count and the latest reviews, for the pages of the management service) needs the bearer token. Keep `replicas: 1`: two copies would create every review twice.

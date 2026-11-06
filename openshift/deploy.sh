@@ -4,7 +4,7 @@
 #
 # Prerequisites:
 #   1. CRC is installed (crc setup done) - this script starts it if it is stopped.
-#   2. The platform (namespace and PostgreSQL server) is deployed: ./openshift/deploy.sh in the leanix-services repository.
+#   2. The platform (namespace and PostgreSQL server) is deployed: ./openshift/deploy.sh in leanix-management-service.
 #   3. ./.env holds the secrets (see .env.example); they are turned into OpenShift secrets, never written to files in git.
 #
 # Usage:
@@ -38,7 +38,7 @@ if ! oc whoami >/dev/null 2>&1; then
     oc login -u kubeadmin -p "$(crc console --credentials | grep kubeadmin | awk -F"'" '{print $2}')" \
         https://api.crc.testing:6443 --insecure-skip-tls-verify=true >/dev/null
 fi
-oc get namespace "$NAMESPACE" >/dev/null 2>&1 || { echo "ERROR: namespace $NAMESPACE not found - deploy the platform first (leanix-services repository)"; exit 1; }
+oc get namespace "$NAMESPACE" >/dev/null 2>&1 || { echo "ERROR: namespace $NAMESPACE not found - deploy leanix-management-service first (it deploys the platform)"; exit 1; }
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 build_image() {
